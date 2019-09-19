@@ -1,0 +1,104 @@
+import java.io.*;
+import java.util.*;
+
+// Initializing all variables.
+public class Employee {
+	String employeename;
+	int employeenumber;
+	int age;
+	String state;
+	int zip;
+	int [] myIntArray = new int [6];
+	
+	// Setting integers to equal 0 and setting strings to null.
+	public Employee() {
+		employeenumber = 0;
+		age = 0;
+		zip = 0;
+		employeename = null;
+		state = null;
+	}
+	
+	//Copy Constructor to set the objects instance variables
+	public Employee (Object obj) {
+		if ((obj != null) && obj instanceof Employee) {
+			Employee ploy = (Employee) obj;
+			this.employeename = new String(ploy.employeename);
+			this.employeenumber = ploy.employeenumber;
+			this.age = ploy.age;
+			this.state = new String(ploy.state);
+			this.zip = ploy.zip;
+		}
+		
+	}
+	
+	// Get and Set constructors for all instance variables
+	public void setName (String en) {
+		employeename = en;
+	}
+	
+	public void setNumber (int e) {
+		employeenumber = e;
+	}
+	
+	public void setAge (int a) {
+		age = a;
+	}
+	
+	public void setState (String st) {
+		state = st;
+	}
+	
+	public void setZip (int z) {
+		zip = z;
+	}
+	
+	public String getName() {
+		return employeename;
+	}
+	
+	public int getNumber() {
+		return employeenumber;
+	}
+	
+	public int getAge() {
+		return age;
+	}
+	
+	public String getState() {
+		return state;
+	}
+	
+	public int getZip() {
+		return zip;
+	}
+	
+	//toString method to organize my string information in a specific order
+	public String toString() {
+		return "Name: "+employeename+"\nNumber: "+employeenumber+"\nAge: "+age+"\nState: "+state+"\nZip: "+zip+"\nAdvisors: "+myIntArray;
+	}
+	
+	// equals method to return true if the employee number is equal to the employee instance created
+	public boolean equals(Object obj) {
+		if ((obj != null) && obj instanceof Employee) {
+			Employee emp1 = (Employee) obj;
+			return (emp1.employeenumber == employeenumber);
+		}
+		else 
+			return false;
+	}
+	
+	//static method to get all advisors for two employee's 
+	public static int [] getAllAdvisors(Employee e1, Employee e2) {
+		if ((e1 != null) && e2 != null) {
+			
+		}
+	}
+	
+	// Main Method
+	public static void main(String[] args) {
+		
+		Employee firstemployee = new Employee();
+		System.out.println(firstemployee.toString());
+	}
+}
