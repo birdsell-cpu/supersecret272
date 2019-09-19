@@ -1,0 +1,103 @@
+public class EmployeeSet {
+	
+	// Declaring instance variables
+	private Employee[] data;
+	private int cnt;
+	
+	// No-Argument constructor
+	public EmployeeSet() {
+		this.data = new Employee[10];
+		this.cnt = 0;
+	}
+	
+	// Copy constructor to copy the object to a new instance
+	//precondition object cannot equal null and should be an instance
+	
+	public EmployeeSet(Object obj) {
+		if((obj != null) && obj instanceof Employee) {
+			EmployeeSet Set1 = (EmployeeSet)obj;
+			cnt = Set1.cnt;
+			// I use arraycopy here to copy the index 0 of set1 to index 0 of the employee array with number count of employees
+			System.arraycopy(Set1.data, 0, this.data, 0, Set1.cnt);
+		}
+	}
+	
+	//This method returns the number of elements in the collection
+	public int size () {
+		int count = 0;
+		for(int i = 0; i < data.length; i++) {
+			if (data[i] instanceof Employee) {
+				count ++;
+			}
+		}
+		return count;
+	}
+	
+	//This method returns the capacity of the collection
+	public int capacity() {
+		return data.length;
+	}
+	
+	//This adds an employee object to the array in the EmployeeSet instance
+	public void add(Employee e) {
+		if(e != null) {
+			data [cnt] = e;
+			cnt ++;
+		}
+	}
+	
+	//This method checks the input parameter. If a is null it returns false. 
+	//If a is not null and contains an object that is equal to a, 
+	//it will return true.
+	public boolean contains(Employee a) {
+		if (a == null) {
+			return false;
+		} else {
+			for(int i = 0; i < data.length; i++) {
+				if(data[i].equals(a))
+					return true;
+			}
+		return false;
+		}
+	}
+	
+	//This removes the employee with number eno from the collection
+	public void remove(int eno) {
+		for(int i =0; i < cnt; i++) {
+			if(eno == data[i].getNumber()) {
+				data[i] = data[cnt-1];
+				cnt--;
+			}
+		}	
+	}
+	
+	//This method checks the capacity of the collection. If the capacity is
+	//smaller than the input parameter, the capacity will be set to minimum
+	//capacity and changes the array to hold minimum capacity objects. If
+	//the capacity is larger than the parameter, the collection remains 
+	//unchanged.
+	private void ensureCapacity(int minimumCapacity) {
+		Employee[] biggerArray;
+		if(data.length < minimumCapacity) {
+			biggerArray = new Employee [minimumCapacity];
+			System.arraycopy(data, 0, biggerArray, 0, cnt);
+			data = biggerArray;
+		}
+	}
+	
+	//This method adds an employee object to the instance such that the array
+	//is in ascending order when it comes to employee nos. Preconditions are
+	//that object a is not equal to null and the array is already in ascending
+	//order.
+	
+	public void addOrdered(Employee a) {
+			
+		}
+	
+	
+	//Main method
+	public static void main(String[] args) {
+		//read("core_dataset.csv");
+	}
+}
+	
