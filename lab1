@@ -1,0 +1,88 @@
+	import java.io.*;
+	import java.util.*;
+
+	class aPair{
+		String employeename;
+		String employeenumber;
+		String zip;
+		int age;
+		String sex;
+		String state;
+		
+		
+		
+	}
+	public class EmployeeFileOp {
+	private static ArrayList<String> arrli;
+		
+		public static void read(String fname){
+			int no = 0; 
+			String[] str = new String [1000];
+			String line = "";
+			try {
+	            // FileReader reads text files in the default encoding.
+	            FileReader fileReader = new FileReader(fname);
+
+	            // Always wrap FileReader in BufferedReader.
+	            BufferedReader bufferedReader = new BufferedReader(fileReader);
+	            arrli = new ArrayList<String>();
+	            while((line = bufferedReader.readLine()) != null) {
+	                //parse line
+	             
+	                String[] lineStr = line.split(",");
+	                String employeename = new String();
+	                arrli.add(employeename);
+	                String employeenumber = new String();
+	                arrli.add(employeenumber);
+	                String zip = new String();
+	                arrli.add(zip);
+	                String sex = new String();
+	                arrli.add(sex);
+	                String state = new String();
+	                arrli.add(state);
+	                }
+			
+	           
+	            bufferedReader.close(); // Always close files.         
+	        }catch(FileNotFoundException ex) {
+	            System.out.println("Unable to open file '" +  fname + "'");                
+	        }catch(IOException ex) {
+	            System.out.println("Error reading file '" + fname + "'");                  
+	        }
+			System.out.println("Finish reading pairs from file "+ fname);
+		}
+		
+		
+		
+		public static void write(String fname){
+			try {
+				File file = new File(fname);
+				
+				FileWriter fw = new FileWriter(file.getAbsoluteFile());
+				BufferedWriter bw = new BufferedWriter(fw);
+				
+				String str = "";
+				//bw.write(str.length+"\n"); 
+				for(int i=0;i<str.length();i++){
+					//System.out.println("i="+i+":" + numberpairs[i].num1+"\t"+numberpairs[i].num2);
+					arrli.get(i);
+				
+				
+				bw.close();
+				fw.close();
+			}} catch (IOException e) {
+				e.printStackTrace();
+			}
+			System.out.println("Writing pairs to file "+ fname);
+		}
+		
+		public static void main(String[] args) {
+			//Generate initial data pairs
+			//generate(10);			//generate 100 pairs
+			//write("young_employee.txt");		//write 100 pairs to a file
+			
+			read("core_dataset.csv");		//read back the 100 pairs
+			write("young_employee.csv"); //write the pairs to another file
+		}
+
+	}
